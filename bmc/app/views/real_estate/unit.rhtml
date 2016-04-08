@@ -1,0 +1,106 @@
+<%= @icons.collect {|i| i.to_html} %>
+	<% session[:redirection_url]= request.request_uri()%>
+			<div id="fullpage">															
+					<%= breadcrumbs %>					
+					<%= error_messages_for :lead %>								
+				<!-- end of breadcrumb -->							
+				<div class="clearBoth"></div>		
+				<div id="detailsLeft">					
+				<% if @unit.featured_weight > 0	%>
+						<%= render(:partial => "photo_gallery") %>					
+				<% else %>
+						<%= render(:partial => "photo_gallery_mls") %>
+				<% end %>						
+					<% if @unit.description != ""%>
+					<div class="condoDescription">
+						<h2>Remarks:</h2>
+						<p><%= @unit.description %></p>
+					</div>
+					<!-- end of condoDescription -->			
+					<% end %>								
+					<div class="detailsNav">
+						<ul>
+							<li id="tab1"><a class="currentTab" href="#">Unit Amenitites</a></li>							
+						</ul>
+					</div>
+					<div class="detailsNavItems">
+						<ul>
+							<% if @feature_codes.size != 0 %>								
+									<%@feature_codes.each do |feature_code|%>
+										<li><%= feature_code.feature_description.titleize %></li>							
+									<% end %>
+							<% else %>
+										<li>Information on unit amenities not available.</li>							
+							<% end %>
+						</ul>
+						<div class="clearBoth"></div>
+					</div>
+					<div class="condoDescription">
+					<p class="finePrint">The Realtor&#0174; Associations Miami-Dade County is not responsible for the accuracy of the information listed above. The data relating to real estate for sale or lease on this website comes in part from the Internet Data Exchange Program (IDX) and the South East Florida Regional MLS and is provided here for consumers' personal, non-commercial use. It may not be used for any purpose other than to identify prospective properties consumers may be interested in purchasing or leasing. Real estate listings held by brokerage firms other than the office owning this website are marked with the IDX Logo on the short inquiry and detailed information about them includes the name of the listing broker. Data provided is deemed reliable but not guaranteed. This information is protected by Copyright and all rights are reserved. This property is shown courtesy of <%= @unit.firm.mls_office_name %></p>
+					<br><br>
+					<div align="center">
+                    <img src="/images/site_wide/floridaIDX.gif" /></div>
+					</div>
+				</div>				
+				<!-- end of detailsleft -->				
+				<div id="detailsRight">		
+					<div class="unitInfo">								
+						<h1 class="unitInfoHeader">
+								<%= @unit.condo.name %> - Unit <%= @unit.unit_number %>						
+						</h1>
+					</div>						
+					<div id="blindUpDownUnitInfo" style="height:362px;">						
+						<div id="request_info" class="unitInfo" style="position:absolute; z-index:-2;">	
+							<div class="unitInfoTitle">Request Information</div>		
+							<div class="unitInfoContent">								
+								<% form_for(@lead) do |f| %>							
+									<div class="unitInfoRequestFullLine">Please <%= link_to 'login', :controller => 'account', :action => 'login', :redirect=> request.request_uri() %>  or <%= link_to 'register', :controller => 'users', :action => 'new', :redirect=> request.request_uri() %> to have your information prefilled.</div>
+									<div class="unitInfoRequestLabel">First Name:</div><div class="unitInfoRequestValue"> <%= f.text_field :first_name, :value => @first_name %></div>		
+									<div class="unitInfoRequestLabel">Last Name:</div><div class="unitInfoRequestValue" style="line-height:normal;"> <%= f.text_field :last_name, :value => @last_name %> </div>		
+									<div class="unitInfoRequestLabel">Email:</div><div class="unitInfoRequestValue"><%= f.text_field :email, :value => @username %></div>		
+									<div class="unitInfoRequestLabel">Phone:</div><div class="unitInfoRequestValue"><%= f.text_field :phone, :value => @phone %></div>																	
+									<div class="unitInfoRequestMessageLabel">Comments:</div><div class="unitInfoRequestMessageValue"><%= f.text_area :comments, :value => @comments %></div>										
+									<%= f.hidden_field :unit_id, :value => @unit.mls_listing_id %>									
+									<div class="unitInfoRequestFullLineButton" style="padding-left:110px; padding-top:8px;padding-bottom:8px;"><div class="blueBtn"><%= submit_tag 'Submit Info Request', :class => "blueBtnInside" %></div>	</div>																												
+								<% end %>  
+							</div>							
+						</div>
+						
+						<div id="map_property" class="unitInfo" style="position:absolute; z-index:-1;">	
+							<div class="unitInfoTitle">Map Property</div>		
+							<div class="unitInfoContent"><%= render_map @map %></div>							
+						</div>																								
+						<div id="condo_info" class="unitInfo">	
+							<div class="unitInfoTitle">Unit Information</div>				
+							<div class="unitInfoContent">
+								<div class="unitInfoLabel">Year built:</div><div class="unitInfoValue"><%= @unit.condo.year_built %></div>		
+								<div class="unitInfoLabel">Address:</div><div class="unitInfoValue" style="line-height:normal;"><%= @unit.condo.street_number %> <%= @unit.condo.street_name %><br /><%= @unit.condo.city %>, <%= @unit.condo.state %> <%= @unit.condo.zip_code %></div>		
+								<div class="unitInfoLabel">Bedrooms:<span class="unitInfoSubLabel"><%= @unit.bedrooms %></span></div><div class="unitInfoLabel" style="width:143px;border-right:none;">Bathrooms:<span class="unitInfoSubLabel"><%= @unit.bathrooms %></span></div>
+								<div class="unitInfoLabel">Total square feet:</div><div class="unitInfoValue"><%= number_with_delimiter(@unit.square_footage) %></div>		
+								<div class="unitInfoLabel">Unit price:</div><div class="unitInfoValue"><%= number_to_currency(@unit.price, :precision => 0) %></div>		
+								<div class="unitInfoLabel">Price per square foot:</div><div class="unitInfoValue"><%= @unit.square_footage.to_i == 0 ? "N/A" : number_to_currency(@unit.price.to_i/@unit.square_footage.to_i, :precision => 0) %></div>		
+								<div class="unitInfoLabel">Taxes:</div><div class="unitInfoValue"><%= @unit.taxes.to_i == 0 ? "N/A" : number_to_currency(@unit.taxes.to_i, :precision => 0) %></div>		
+								<div class="unitInfoLabel">MLS ID:</div><div class="unitInfoValue"><%= @unit.mls_listing_id %></div>	
+								<!-- <div class="unitInfoLabel" style="border-bottom:none;">Courtesy of:</div><div class="unitInfoValue" style="line-height:normal;border-bottom:none;"><%= @unit.firm.mls_office_name %></div>	-->
+							</div>								
+						</div>		
+					</div>							
+					<div class="unitInfo" style="height:35px;">						
+							<div class="unitInfoBasic">
+								<%= link_to_function "Unit Information",
+																					"showCondoInfo()" %>
+							</div>								
+							<div class="sendToAFriend">
+						 		<%= link_to_function "Map this Property",
+																					"showMapProperty()" %>	
+							</div>																											
+					</div>					
+					<div class="unitInfo" style="border-bottom: 1px solid #c4c4c4;border-top:none;">													
+						<div style="padding-top:8px;padding-bottom:8px;"><%= link_to_function "Request More Information",
+																					"showRequestInfo()", :class => "bigGreenBtn alignCenter" %>																					
+																					</div>
+					</div>											
+					<!-- end of unitinfo -->																											
+				</div>									
+				<!-- end of detailsRight -->																											
+			</div>	

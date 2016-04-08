@@ -1,0 +1,9 @@
+<% if @category.parent.nil? && !@category.children.empty? %>
+new Effect.toggle('<%= dom_id(@category) %>','blind');
+<% end %>
+<% if !@category.businesses.empty? %>
+$('category_business_list').update('<%= escape_javascript(render :partial => "business.html.erb", :collection => @category.businesses) %>');
+<% else %>
+$('category_business_list').update('This category has no businesses in it yet.');
+<% end %>
+$('category_business_list').visualEffect("highlight");

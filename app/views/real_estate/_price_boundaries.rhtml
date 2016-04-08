@@ -1,0 +1,13 @@
+
+<select id="price_lower" name="unit[price_lower]">
+	<option value="">No Minimum</option>
+		<%= options_for_select(@value_name_collection, selected = @price_lower)%>
+</select>								   
+
+<select id="price_upper" name="unit[price_upper]">
+	<option value="">No Maximum</option>
+		<%= options_for_select(@value_name_collection, selected = @price_upper)%>
+</select>								   
+
+
+

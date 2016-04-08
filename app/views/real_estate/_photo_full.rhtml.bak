@@ -1,0 +1,4 @@
+<%= image_tag url_for_file_column(photo_main, "image_link", "full") %>	
+
+
+

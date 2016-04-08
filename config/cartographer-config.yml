@@ -1,0 +1,10 @@
+# Don't be alarmed by the use of colons in the key, as
+# long as it's not followed by a space...
+#
+
+# geocoding key can be anything you ƒor the domain
+geocoding: ABQIAAAACXrsCKIBz7LjYHAvrKXBsxTJQa0g3IQ9GZqIMmInSLzwtGDKaBRlFn13mVqljnjrVNMa8llwNiS3iQ
+
+# this key should be replaced with one that works for the production domain
+localhost:3000: ABQIAAAACXrsCKIBz7LjYHAvrKXBsxTJQa0g3IQ9GZqIMmInSLzwtGDKaBRlFn13mVqljnjrVNMa8llwNiS3iQ
+								

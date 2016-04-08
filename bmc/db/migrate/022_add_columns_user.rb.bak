@@ -1,0 +1,10 @@
+class AddColumnsUser < ActiveRecord::Migration
+  def self.up
+  	add_column :users, :first_name, :string, :limit => 255
+  	add_column :users, :last_name, :string, :limit => 255
+  	add_column :users, :phone, :integer  	
+  end
+
+  def self.down
+  end
+end

@@ -1,0 +1,10 @@
+<div class="business_item">
+	<% if business.class.to_s == "Business" %>
+	<span class="business_thumb"><%= image_tag(business.business_photo.public_filename(:thumb)) unless business.business_photo.nil? %></span>
+	<%= link_to business.name, business_path(business), :class => "business_name" %>
+	<% else %>
+	<span class="business_thumb"><%# image_tag(url_for_file_column(business, "main_image", "thumb"), :style => "position: absolute; top: 5px;right: 15px;") if business %></span>
+	<%= link_to business.name, condo_path(business.permalink_condo), :class => "business_name" %>
+	<% end %>
+	<p><%= business.full_address %></p>
+</div>

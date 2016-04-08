@@ -1,0 +1,28 @@
+<div id="photoViewer">
+  <div class="chooseYourView">
+    <ul>
+      <li class="menuTitle">CHOOSE YOUR VIEW</li>      
+        <li id="temp">      
+          test test test test test
+        </li>      
+    </ul>
+  </div>
+  <div id="imageHolder" class="imageHolder">   	  	          
+    <% @mls_photo_array.each_with_index do |photo, index| %>        
+				<%= render_mls_photo(photo.to_s, index == 0, index) %>        		
+		<% end %>    
+  </div>
+  <div class="imageNav clearBoth">
+    <table>
+      <tr>                  
+        <td>                                    
+          <div id="thumbnails" class="thumbnailsHolder" style='white-space: nowrap;'>                                         
+            <%= render(:partial => "photo_gallery_thumbnails_mls") %>
+          </div>
+        </td>                 
+      </tr>
+    </table>
+  </div>
+  <!-- end of imageNav -->          
+</div>
+<!-- end of photoViewer -->

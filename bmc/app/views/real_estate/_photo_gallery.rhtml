@@ -1,0 +1,32 @@
+<div id="photoViewer">
+  <div class="chooseYourView">
+    <ul>
+      <li class="menuTitle">CHOOSE YOUR VIEW</li>
+      <% @photo_galleries.each do |photo_gallery| %>
+        <li id="sidebar-item-<%=photo_gallery.id%>">      
+          <%= link_to_remote "<strong>#{photo_gallery.photo_gallery_type.gallery_type}</strong>", :url => { :action => 'change_photo_gallery', :id => photo_gallery.id } %>                            
+        </li>
+      <% end %>   
+    </ul>
+  </div>
+
+  <div id="imageHolder" class="imageHolder">            
+    <% @photo_galleries.first.photos.each_with_index do |photo, index| %>
+      <%= render_photo(photo, index == 0) %>
+    <% end %>
+  </div>    
+
+  <div class="imageNav clearBoth">
+    <table>
+      <tr>                  
+        <td>                                    
+          <div id="thumbnails" class="thumbnailsHolder" style='white-space: nowrap;'>                                         
+            <%= render(:partial => "photo_gallery_thumbnails") %>
+          </div>
+        </td>                 
+      </tr>
+    </table>
+  </div>
+  <!-- end of imageNav -->          
+</div>
+<!-- end of photoViewer -->

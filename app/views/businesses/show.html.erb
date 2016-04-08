@@ -1,0 +1,75 @@
+<%= @icons.collect {|i| i.to_html} %>
+<div id="fullpage">
+				<div class="breadCrumb">
+					<ul>
+						<li><a href="">Home</a>:</li>
+						<li><a href="/community/brickell-and-downtown-miami/">Brickell and Downtown Miami Guide:</a></li>					<li><%= @business.name %></li>
+
+					</ul>
+				</div>
+				<!-- end of breadcrumb -->
+
+				<h1 class="alignLeft"><%= @business.name %></h1>
+				<ul class="searchFunctions">
+					<!-- <li class="searchFunction1"><a href="">Back to Results</a></li> -->
+					<li class="searchFunction2"><a href="">Print This Page</a></li>
+
+					<!-- <li class="searchFunction3">Search Results Page 1 of 11</li> -->
+				</ul>
+				
+				
+				<div id="bottomHolder">
+
+					<%= render :partial => "categories" %>
+
+					<div id="areaDetailsMid">
+						<div class="photoHolder">
+							<%= render_map @map %>
+							
+							
+						</div>
+						<div class="description">
+							<h3>General Information</h3>
+							<%= textilize(@business.description) %>
+
+						</div>
+					</div>
+					<!-- end of mid section -->
+
+					<div id="columnRight">
+						<div id="contactInfo">
+
+							<div class="contactInfoItem">
+								
+								<p><%= @business.name %><br>
+								<%= @business.address %><br /><%= @business.city %>, <%= @business.state %> <%= @business.zipcode %></p>
+								<ul>
+									<li>Telephone: <%= number_to_phone(@business.phone, :area_code => true)  %></li>
+									<li>Fax: <%= @business.fax %></li>
+
+								</ul>
+							</div>
+							<% if @business.url %>
+							<div class="contactInfoItem">
+								<ul>
+									<li><a href="<%= @business.url %>" target="_blank">Visit their website</a></li>
+								</ul>
+							</div>
+							<% end %>
+							<div class="contactInfoItem removeBorder">
+								<a id="toFriend" href="">Send To A Friend</a>
+
+							</div>
+							
+						</div>
+						
+
+						<div id="small_map">
+							<%= render_map @map2 %>
+						</div>
+					</div>
+					
+				</div>
+
+</div>
+		<!-- end of full page -->

@@ -1,0 +1,42 @@
+														
+						if !Firm.exists?(:mls_office_id => mls_office_id)
+								puts "FIRM DOES NOT EXIST"
+								Firm.create(
+										:mls_office_id =>columns[85].to_s.gsub(/\"/,""),
+										:tln_firm_id =>columns[3].to_s.gsub(/\"/,""),
+										:mls_office_name =>columns[4].to_s.gsub(/\"/,""),
+										:mls_office_phone =>columns[5].to_s.gsub(/\"/,""))
+							else
+								puts "FIRM EXISTS"								
+							end							
+							
+							if !Agent.exists?(:mls_agent_id => columns[86].to_s.gsub(/\"/,""))
+								puts "AGENT DOES NOT EXIST"
+								Agent.create(
+										:mls_agent_id =>columns[86].to_s.gsub(/\"/,""),
+										:mls_agent_name =>columns[7].to_s.gsub(/\"/,""),
+										:mls_agent_phone =>columns[8].to_s.gsub(/\"/,""),
+										:firm_id => firm_id)
+							else
+								puts "AGENT EXISTS"								
+							end								
+							
+							if !Unit.exists?(:mls_listing_id => columns[2].to_s.gsub(/\"/,""))
+								puts "UNIT DOES NOT EXIST"
+								Unit.create(
+										:mls_listing_id =>columns[2].to_s.gsub(/\"/,""),
+										:unit_number =>columns[24].to_s.gsub(/\"/,""),
+										:price =>columns[17].to_s.gsub(/\"/,""),
+										:bedrooms =>columns[42].to_s.gsub(/\"/,""),
+										:bathrooms =>columns[43].to_s.gsub(/\"/,""),
+										:feature_codes =>columns[84].to_s.gsub(/\"/,""),
+										:sale_or_rent =>###HAVE###,
+										:description =>columns[15].to_s.gsub(/\"/,""),
+										:square_footage =>columns[41].to_s.gsub(/\"/,""),
+										:taxes =>columns[61].to_s.gsub(/\"/,""),
+										:tax_year =>columns[62].to_s.gsub(/\"/,""),
+										:condo_id =>###HAVE###,
+										:agent_id => ###TBD###)
+								else
+									puts "UNIT EXISTS"								
+								end		

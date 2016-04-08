@@ -1,0 +1,72 @@
+
+<%= @icons.collect {|i| i.to_html} %>
+
+<div id="fullpage">
+				<div class="breadCrumb">
+					<ul>
+						<li><a href="">Home</a>:</li>
+						<li>Brickell and Downtown Miami Guide</li>
+
+					</ul>
+				</div>
+				<!-- end of breadcrumb -->
+
+				<h1 class="alignLeft">Brickell and Downtown Miami Guide</h1>
+				<br><br>
+				
+				
+					<p class="communityGuide">Brickell and downtown Miami continue evolving into vibrant residential, nightlife and cultural centers.  What was in the 1980s and 1990s primarily a business district has evolved into an upscale urban neighborhood.  Because city living is as much about the condo or loft you call home as the world-class restaurants, nightlife and entertainment right outside your doorstep the Downtown Miami Guide below provides you with information on the various areas of interest in your neighborhood. The Downtown Miami Guide--as well as this website-- is a work-in-progress so stay tuned for continued improvements.<br><br>You should also <a href="http://brickellmiamicondos.com/en/">check out our blog </a> and <a href="http://www.feedburner.com/fb/a/emailverifySubmit?feedId=1655191&amp;loc=en_US">subscribe to our Brickell Blog Feed by email</a> to stay informed on news, events and other updates concerning the Brickell and downtown Miami neighborhood.</p>
+				<br><br>
+				<div class="genericTabNav">
+					
+					<!--
+					<ul class="searchFunctions">
+						<li class="searchFunction1">
+							<% form_tag businesses_path, :method => 'get' do -%>
+								<label for="query">Search</label>
+						       <%= text_field_tag :query, params[:query], :size => 15, :id => :search_box, :style => "border: 1px solid black;" -%>
+						    <% end -%>
+						</li>
+						<li class="searchFunction2"><a href="">Print This Page</a></li>
+						<% if params[:query] %>
+						<li class="searchFunction3">Search Results for <%= params[:query] %></li>
+						<% end %>
+					</ul>
+					-->
+					<ul>
+						<!-- <li class="shortTab"><%= link_to "All", :action => "index" %></li> -->
+						<li class="shortTab"><%= link_to "Condos", show_category_path(:category_id => "condos"), :class => @currentTab %></li>
+				    <% for category in @categories %>
+				    	<% if category == @category %>
+				    		<li class="shortTab"><%= link_to category.name, show_category_path(:category_id => category), :class => 'currentTab' %></li>
+				    	<% else %>
+				    		<li class="shortTab"><%= link_to category.name, show_category_path(:category_id => category)%></li>
+				    	<% end %>				      
+				    <% end %>
+				  </ul>
+				</div>
+				
+				<div class="mapGuide">
+					<div class="mapHolder">
+						<%= render_map(@map) %>
+					</div>
+				
+					<div class="mapNav">
+
+						<div class="mapMenu">
+							<ul>
+								<% for business in @businesses %>
+								<li>
+									
+									<%= link_to "#{business.name}<br /><span>#{business.address}</span>", business, :onclick => "marker_#{business.class.to_s.downcase}_#{business.id}_infowindow_function(); return false;" %>
+									
+								</li>
+								<% end %>
+							</ul>
+						</div>
+						<!-- end of map menu -->
+					</div>
+				</div>
+		</div>
+		<!-- end of full page -->		
+		

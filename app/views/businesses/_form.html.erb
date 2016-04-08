@@ -1,0 +1,76 @@
+<style>
+input, select, textarea {
+	border: 1px solid black;
+}
+
+p {
+	padding: 5px 20px;
+}
+</style>
+<p>
+  <b>Name</b><br />
+  <%= f.text_field :name %>
+</p>
+
+<p>
+  <b>Address</b><br />
+  <%= f.text_field :address %>
+</p>
+
+<p>
+  <b>City</b><br />
+  <%= f.text_field :city %>
+</p>
+
+<p>
+  <b>Zipcode</b><br />
+  <%= f.text_field :zipcode %>
+</p>
+
+<p>
+  <b>State</b><br />
+  <%= f.text_field :state %>
+</p>
+
+<p>
+  <b>Country</b><br />
+  <%= f.country_select :country, priority_countries=['United States','Spain'] %>
+</p>
+
+<p>
+  <b>Description</b><br />
+  <%= f.text_area :description %>
+</p>
+
+<p>
+  <b>Phone</b><br />
+  <%= f.text_field :phone %>
+</p>
+
+<p>
+  <b>Fax</b><br />
+  <%= f.text_field :fax %>
+</p>
+
+<p>
+  <b>Website</b><br />
+  <%= f.text_field :url %>
+</p>
+
+<p>
+  <b>Categories</b><br />
+	<% for category in Category.find(:all) %>
+	<%= check_box_tag "business[category_ids][]", category.id, @business.categories.include?(category) %>
+	<%= category.name %>
+  	<%# f.select :category_id, Category.find_children(:all).collect {|c| [c.name, c.id]} %>
+	<% end %>
+</p>
+
+<% fields_for :business_photo, @business_photo do |p| %>
+<p><label for="picture_uploaded_data">Business Photo</label><br />
+	<%= p.file_field :uploaded_data %></p>
+<% end %>
+
+<p>
+  <%= f.submit "Submit" %>
+</p>

@@ -1,0 +1,3 @@
+<a href="<%= url_for_file_column(photo_main, 'image_link', 'full') %>" onMouseover="ddrivetip('<%=photo_main.description%>')" onMouseout="hideddrivetip()"><%= image_tag url_for_file_column(photo_main, "image_link", "medium")%></a>
+<a href="<%= url_for_file_column(photo_main, 'image_link', 'full') %>" rel="lightbox" title="<%=photo_main.description%>"><%= image_tag url_for_file_column(photo_main, "image_link", "medium")%></a>
+

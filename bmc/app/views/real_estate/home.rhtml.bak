@@ -1,0 +1,160 @@
+	<% @style_sheet = "master" %>			
+			<div id="flashHolder">
+				<a href="">
+				<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="706" height="222">
+                  <param name="movie" value="/flash/brickell-main4.swf" />
+                  <param name="quality" value="high" />
+                  <embed base="." src="/flash/brickell-main4.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="706" height="222"></embed>
+                  <param name="base" value="." />
+			    </object>
+				</a></div><!-- END flashHolder -->			 
+			<div id="holder1">	
+				<div id="brickellGuide">
+							<a href=""><img src="images/site_wide/viewBtn.gif" width="35" height="11" alt="" /></a>
+						</div>					
+				<div id="newsletter">
+					<div class="newsLetter"><div class="newsLetterTitle">NEWSLETTER</div></div>	
+					<div id="description"><p>Receive information on local real estate, news, events and entertainment:</p></div>					
+					<form action="http://www.feedburner.com/fb/a/emailverify" method="post" target="popupwindow" onsubmit="window.open('http://www.feedburner.com/fb/a/emailverifySubmit?feedId=1655191', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+					<table>
+						<tr>
+							<td><input type="text" value="Enter your email"name="email"/><input type="hidden" value="http://feeds.feedburner.com/~e?ffid=1655191" name="url"/><input type="hidden" value="BrickellMiamiCondos.com Blog Feed" name="title"/><input type="hidden" name="loc" value="en_US"/></td>
+							<td>
+								<div class="blueBtn">
+									<input class="blueBtnInsideHome" type="submit" value="subscribe"/>
+								</div>
+							</td>
+						</tr>
+					</table>
+					</form>
+					<div id="description"><p class="finePrint"><a href="http://blog.brickellmiamicondos.com/privacy-policy/">privacy policy</a> | powered by <a href="http://www.feedburner.com/fb/a/home">feedburner</a></p></div>
+				</div>				
+			</div> <!-- END holder1 -->			
+			
+			<div id="bottomHolder">
+				<div id="columnLeft">					
+					<%= render :partial => 'shared/real_estate_ui' %>				
+				</div> <!-- END columnLeft -->				
+				<div id="columnMid">
+					<div id="featuredProperties">
+						<div class="infoList"><div class="infoListTitle">FEATURED CONDOMINIUMS</div></div>								
+						<div class="featuredItem">							
+							<table cellpadding="0" cellspacing="0" border="0">
+								<tr>
+									<td class="propertyImage">
+										<a id="condo_id_26" href="<%= url_for_file_column(Condo.find(26), 'main_image', 'medium') %>" rel="lightbox" title="Santa Maria"><%= image_tag url_for_file_column(Condo.find(26), "main_image", "thumb")%></a>																									                 																				
+									</td>
+									<td class="propertyDescription">
+										<h1><a href="">Santa Maria</a></h1>
+										<ul>
+											<li>2 Bedroom,</li>
+											<li>2 Bath</li>
+											<li>1,200 sq. ft.</li>
+										</ul>
+										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque neque ligula, iaculis ut, sollicitudin sit amet. Lorem ipsum dolor sit amet.</p>
+										<div class="greenBtn">
+											<input class="greenBtnInside" type="submit" value="view now"/>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+						
+						<div class="featuredItem">
+							<table cellpadding="0" cellspacing="0" border="0">
+								<tr>
+									<td class="propertyImage">
+										<a id="condo_id_84" href="<%= url_for_file_column(Condo.find(84), 'main_image', 'medium') %>" rel="lightbox" title="Atlantis"><%= image_tag url_for_file_column(Condo.find(84), "main_image", "thumb")%></a>																									                 																				
+									</td>
+									<td class="propertyDescription">
+										<h1><a href="">Jade on Brickell Bay</a></h1>
+										<ul>
+											<li>2 Bedroom,</li>
+											<li>2 Bath</li>
+											<li>1,200 sq. ft.</li>
+										</ul>
+										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque neque ligula, iaculis ut, sollicitudin sit amet. Lorem ipsum dolor sit amet.</p>
+										<div class="greenBtn">
+											<input class="greenBtnInside" type="submit" value="view now"/>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+
+						<div class="featuredItem">
+							<table cellpadding="0" cellspacing="0" border="0">
+								<tr>
+									<td class="propertyImage">
+										<a id="condo_id_2" href="<%= url_for_file_column(Condo.find(46), 'main_image', 'medium') %>" rel="lightbox" title="Atlantis"><%= image_tag url_for_file_column(Condo.find(46), "main_image", "thumb")%></a>																									                 																				
+									</td>
+									<td class="propertyDescription">
+										<h1><a href="">Neo Vertika</a></h1>
+										<ul>
+											<li>2 Bedroom,</li>
+											<li>2 Bath</li>
+											<li>1,200 sq. ft.</li>
+										</ul>
+										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque neque ligula, iaculis ut, sollicitudin sit amet. Lorem ipsum dolor sit amet.</p>
+										<div class="greenBtn">
+											<input class="greenBtnInside" type="submit" value="view now"/>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+
+						<div class="featuredItem removeBorder">
+							<table cellpadding="0" cellspacing="0" border="0">
+								<tr>
+									<td class="propertyImage">
+										<a id="condo_id_2" href="<%= url_for_file_column(Condo.find(2), 'main_image', 'medium') %>" rel="lightbox" title="Atlantis"><%= image_tag url_for_file_column(Condo.find(2), "main_image", "thumb")%></a>																									                 																				
+										
+									</td>
+									<td class="propertyDescription">
+										<h1><a href="">Atlantis</a></h1>
+										<ul>
+											<li>2 Bedroom,</li>
+											<li>2 Bath</li>
+											<li>1,200 sq. ft.</li>
+										</ul>
+										<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque neque ligula, iaculis ut, sollicitudin sit amet. Lorem ipsum dolor sit amet.</p>
+										<div class="greenBtn">
+											<input class="greenBtnInside" type="submit" value="view now"/>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div> <!-- END featuredProperties -->
+				</div> <!-- END columnMid -->
+
+				<div id="columnRight">
+								
+					<div id="events">
+						<div class="infoList"><div class="infoListTitle">LATEST BLOG POSTS</div></div>																		
+						
+						<div class="eventItem">							
+							<h1>Cirque Du Soleil</h1>
+							<p>Lorem ipsum dolor sit amet, consectetuer sit adipisci elit. Pellentesque iaculis...<a href="">More</a></p>
+						</div>
+						
+						<div class="eventItem">						
+							<h1>Miami Light Project</h1>
+							<p>Lorem ipsum dolor sit amet, consectetuer sit adipisci elit. Pellentesque iaculis...<a href="">More</a></p>
+						</div>
+						
+						<div class="eventItem">						
+							<h1>Miami Light Project</h1>
+							<p>Lorem ipsum dolor sit amet, consectetuer sit adipisci elit. Pellentesque iaculis...<a href="">More</a></p>
+						</div>
+						
+						<div class="eventItem removeBorder">							
+							<h1>Miami Light Project</h1>
+							<p>Lorem ipsum dolor sit amet, consectetuer sit adipisci elit. Pellentesque iaculis...<a href="">More</a></p>
+						</div>
+						
+					</div><!-- END events -->
+								
+				</div> 	<!-- END columnRight -->
+			</div> <!-- END bottomHolder -->

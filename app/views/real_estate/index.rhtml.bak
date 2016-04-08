@@ -1,0 +1,36 @@
+
+			
+			<div id="bottomHolder">
+				<div id="columnLeft">				
+					<%= render :partial => 'shared/real_estate_ui' %>					
+				</div>
+				<div id="columnRightSec">
+					
+					<div class="breadCrumb">
+						<%= breadcrumbs %>
+					</div>
+					
+					
+					<!-- end of breadcrumb -->
+
+					<h1 class="alignLeft"><span><%= @condos.size %></span> Properties Match Your Search.</h1>
+					<ul class="searchFunctions">
+						<!-- <li class="searchFunction1"><a href="">Back to Results</a></li>
+						<li class="searchFunction2"><a href="">Print This Page</a></li> 
+						<li class="searchFunction3">Search Results Page 1 of 11</li> -->
+					</ul>
+					<ul id="searchResultTabs">
+						<li class="firstTab"><a href="">Most Recent</a></li>
+						<li><a href="">Price</a></li>
+						<li><a href="">Square feet</a></li>
+						<li class="lastTab"><a href="">Pictures</a></li>
+					</ul>
+					
+						<%= render :partial => 'shared/listing_condo' %>					
+					
+				</div>
+			</div>
+			
+
+
+

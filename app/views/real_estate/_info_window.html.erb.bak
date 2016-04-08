@@ -1,0 +1,14 @@
+<div class="info_window">
+  <div id="title"><%=h condo.name %></div>
+  <% if condo.main_image.nil? %>	
+				<img src="/images/site_wide/PhotoComingSoon.jpg" width="100" height="129" alt="" />											
+			<% else %>
+				<%= image_tag(url_for_file_column(condo, "main_image", "thumb")) if condo %>
+		<% end %>	
+  <div id="content"><%=h condo.address %>  	
+    <div id="link">
+      <span>&gt;&gt;</span>
+      <%= link_to 'View Details', condo_path(condo.permalink_condo) %>
+    </div>    
+  </div>
+</div>

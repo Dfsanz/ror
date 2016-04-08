@@ -1,0 +1,82 @@
+<%= link_to_function "<span>Search</span> for a property", "new Effect.toggle('propertySearch', 'blind')", :class => "bigButton" %>
+					<div id="propertySearch" style= <%= @real_estate_ui_display %>>	
+						<% form_tag :action => 'search', :id => @unit do %>						
+							
+							<div id="propertySearchBuildings">
+								<h1>Building:</h1>																  
+								<select name="unit[condo_id]">
+									<option value="">Any</option>
+									<%=options_from_collection_for_select(Condo.find(:all), :id, :name, selected_value = @condo_id )%> 
+								</select>								 
+							</div>
+							
+							<div id="propertySearchBuildings">
+								<h1>Sale or Rent:</h1>																  
+								<select id="sale_or_rent" name="unit[sale_or_rent]">
+									<option value="">Any</option>
+									<%= options_for_select([["For Sale","sale"],["For Rent","rent"]], selected = @sale_or_rent)%>									
+								</select>										  
+    
+    
+								<%= observe_field "sale_or_rent", :update => "price_boundaries",
+								:with => "sale_or_rent", :url => { :controller => "real_estate",
+								:action => "get_price_boundaries" } %>
+
+								<br />
+							</div>
+							
+							
+							<div id="propertySearchPrice">
+								<h1>Price Range:</h1>								
+									<div id="price_boundaries">
+											<%= render(:partial => "price_boundaries") %>									
+									</div>
+							</div>
+
+							<div id="propertySearchBeds">
+								<table>
+									<tr>
+										<td><h1>Beds:</h1></td>
+										<td><h1>Baths:</h1></td>
+									</tr>
+									<tr>
+										<td>											
+											<select name="unit[bedrooms]">
+												<option value="">Any</option>
+												 <%= options_for_select([1, 2, 3, 4, 5, 6], selected = @bedrooms)%>
+												</select>										</td>
+										<td>								
+								<select name="unit[bathrooms]">
+									<option value="">Any</option>
+									 <%= options_for_select([1, 2, 3, 4, 5], selected = @bathrooms)%>
+									</select>										</td>
+									</tr>
+									
+								</table>				
+								<%= image_submit_tag("site_wide/main_22.jpg", { :name => "commit", :id =>"startYourSearchBtn" } ) %>		
+							
+								
+							</div>		
+							
+							 		<% end %>			
+						</div>
+						
+						
+						<%= link_to_function "<span>Buy </span>a property", "new Effect.toggle('propertyBuy', 'blind')", :class => "bigButton" %>					
+						<div id="propertyBuy" style="display: none">	
+							test
+						</div>
+							<%= link_to_function "<span>Sell </span>a property", "new Effect.toggle('propertySell', 'blind')", :class => "bigButton" %>
+							<div id="propertySell" style="display: none">	
+								test
+						</div>
+						<%= link_to_function "<span>Rent </span>a property", "new Effect.toggle('propertySearch', 'blind')", :class => "bigButton" %>
+						
+						
+						
+											
+
+		
+
+
+

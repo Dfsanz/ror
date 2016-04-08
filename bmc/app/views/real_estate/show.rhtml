@@ -1,0 +1,132 @@
+				<%= @icons.collect {|i| i.to_html} %>
+				<div id="bottomHolder">
+				<div id="columnLeft">	
+					<%= render :partial => 'shared/real_estate_ui' %>											
+				</div>
+				<div id="columnRightSec">
+					<div class="breadCrumb">
+						<%= breadcrumbs %>
+					</div>
+					<!-- end of breadcrumb -->
+						<%= render :partial => 'condo_photo_gallery' %>	
+					
+					<div id="condoComponent" class="condoComponent">					
+					<div class="condoInfo">		
+						<h1 class="unitInfoHeader">
+								<%= @condo.name %> Condo				
+						</h1>
+					</div>	
+										
+					<div class="blindUpDownUnitInfo" id="blindUpDownUnitInfo" style="height:408px;">
+											
+						
+						<div id="map_property" class="condoInfo"  style="position:absolute; z-index:-1;">
+							<div class="unitInfoTitle">Map Property</div>											
+								<div class="condoInfoContent" style="height:377px;" id="map" ><%= render_map @map %></div>												
+						</div>				
+						
+						<div id="condo_info" class="condoInfo">	
+							<div class="unitInfoTitle">Condo Information</div>				
+							<div class="condoInfoContent">
+								<div class="condoInfoLabel">Year built:</div><div class="condoInfoValue"><%= @condo.year_built %></div>		                 
+								<div class="condoInfoLabel">Address:</div><div class="condoInfoValue" style="line-height:normal;"><%= @condo.street_number %> <%= @condo.street_name %><br /> <%= @condo.city %>, <%= @condo.state %> <%= @condo.zip_code %></div>		
+								<div class="condoInfoLabel">Number of floors:</div><div class="condoInfoValue"><%= @condo.no_of_floors %></div>		                 
+								<div class="condoInfoLabel">Number of units:</div><div class="condoInfoValue"><%= @condo.no_of_units %></div>		                 																																																																																																								
+								<div class="condoInfoLabel">Bedrooms:</div><div class="condoInfoValue"><%= @condo.beds %></div>		                 
+								<div class="condoInfoLabel">Bathrooms:</div><div class="condoInfoValue"><%= @condo.baths %></div>		
+								<div class="condoInfoLabel">Units for sale:</div><div class="condoInfoLabel" style="width:160px;border-right:none;"><span class="unitInfoSubLabel"><%= @condo.units.find(:all, :conditions => ["sale_or_rent ='sale' and active='1'"]).size %></span></div>
+								<div class="condoInfoLabel">For sale price range:</div><div class="condoInfoValue"><%= number_to_currency(@condo.units.minimum(:price, :conditions => ["sale_or_rent = 'sale' and active = '1'"]), :precision => 0) %> - <%= number_to_currency(@condo.units.maximum(:price, :conditions => ["sale_or_rent = 'sale' and active = '1'"]), :precision => 0) %></div>	
+																																																		
+								<div class="condoInfoLabel">Units for rent:</div><div class="condoInfoLabel" style="width:160px;border-right:none;"><span class="unitInfoSubLabel"><%= @condo.units.find(:all, :conditions => ["sale_or_rent ='rent' and active='1'"]).size %></span></div>									                 
+								<div class="condoInfoLabel" style="border-bottom:none;">For rent price range:</div><div class="condoInfoValue" style="border-bottom:none;"><%= number_to_currency(@condo.units.minimum(:price, :conditions => ["sale_or_rent = 'rent' and active = '1'"]), :precision => 0) %> - <%= number_to_currency(@condo.units.maximum(:price, :conditions => ["sale_or_rent = 'rent' and active = '1'"]), :precision => 0) %></div>
+								<div class="condoInfoLabel" style="border-top:none;"></div><div class="condoInfoValue" style="border-top:none;"></div>
+					                 
+								
+								
+							</div>								
+						</div>						
+						
+					</div>							
+					<div class="condoInfo" style="height:35px;">						
+							<div class="condoInfoBasic">
+								<%= link_to_function "Condo Information",
+																					"showCondoInfo()" %>
+							</div>								
+							<div class="mapThisProperty">
+						 		<%= link_to_function "Map this Property",
+																					"showMapProperty()" %>		
+							</div>																											
+					</div>					
+					<div class="condoInfo" style="border-bottom: 1px solid #c4c4c4;border-top:none;">													
+						<div style="padding-top:21px;padding-bottom:21px;"><!--<a class="bigGreenBtn alignCenter" href="">request more information</a>--></div>
+					</div>											
+					<!-- end of condoInfo -->
+					</div> <!-- end of condoComponent -->		
+					
+					
+					
+						<div class="condoDescription">
+						<br><br><br>
+						<h1>Condo Description:</h1>
+						<% description = @condo.description %>						
+						<% if description == "" %>
+							<p>Description coming soon!</p>
+						<% else %>
+							<p><%= textilize(@condo.description) %></p>
+						<% end %>
+					</div>
+	
+
+				<ul id="searchResultTabs">
+						<li class="firstTab"><a href="">Most Recent</a></li>
+						<li><a href="">Price</a></li>
+						<li><a href="">Square feet</a></li>
+						<li class="lastTab"><a href="">Pictures</a></li>
+					</ul>					
+ 				<%= render :partial => 'shared/listing_unit' %>				
+ 				<br><br>				
+					<p class="finePrint">The data relating to real estate for sale/lease on this web site comes from a cooperative data exchange program of the Multiple Listing Service (MLS) in which these Brokers participate (Realtor&reg; Association of Miami-Dade County, Realtor&reg; Association of Greater Ft. Lauderdale, Realtor&reg; Association of Greater Miami and the Beaches, Northwestern Dade Association of Realtors&reg;, South Broward Board of Realtors&reg;). The properties displayed may not be all of the properties in the MLS database, or all of the properties listed with Brokers participating in the cooperative data exchange program. Properties listed by Brokers other than this Broker are marked with the IDX Symbol, indicating an agreement to exchange property information. Detailed information about such properties includes the name of the listing Broker's Company. Information provided is thought to be reliable but is not guaranteed to be accurate. You are advised to verify facts that are important to you. No warranties, expressed or implied, are provided for the data herein, or for their use or interpretation by the user. This information is protected from unlawful duplication by copyright. Federal law prohibits discrimination on the basis of race, color, religion, sex, handicap,familial status or national origin in the sale, rental or financing of housing.</p>
+				<br><br>
+				<div align="center">
+                    <img src="/images/site_wide/floridaIDX.gif" /></div>
+				
+					<script type="text/javascript">
+						//<![CDATA[
+						function load() 
+						{
+							if (GBrowserIsCompatible()) 
+							{
+								var map = new GMap2(document.getElementById("map"));
+								map.addControl(new GSmallMapControl());map.addControl(new GMapTypeControl());
+								map.setCenter(new GLatLng(<%= @condo.latitude %>, <%= @condo.longitude %>), 16);
+								// map.openInfoWindow(map.getCenter(), document.createTextNode("Hello, world"));
+								var marker = new GMarker(new GLatLng(<%= @condo.latitude %>, <%= @condo.longitude %>));
+								GEvent.addListener(marker, "click", function() {    marker.openInfoWindowHtml("Condo ID: #<b>" + <%= @condo.id %> + "</b>");  });				    								
+								map.addOverlay(marker);		
+								
+							}
+						}
+						
+						function addMarker(latitude, longitude, id) 
+						{
+						    var marker = new GMarker(new GLatLng(latitude, longitude));
+						    GEvent.addListener(marker, 'click',
+						        function() {
+						           focusPoint(id);
+						        }
+						    );
+						    map.addOverlay(marker);						    
+						}
+						
+						function focusPoint(id)
+						{
+					  
+						}
+						
+						//]]>
+						</script>
+					
+												
+				</div> <!-- end columnRightSec -->  
+			</div>
+			

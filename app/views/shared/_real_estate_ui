@@ -1,0 +1,72 @@
+					
+					
+					
+					
+						<%= link_to_function "<span>Search</span> for a property", "new Effect.toggle('propertySearch', 'blind')", :class => "bigButton" %>
+					<div id="propertySearch">
+						<% form_tag :action => 'search', :id => @unit do %>						
+							<div id="propertySearchBuildings">
+								<h1>Building:</h1>
+								 <%= collection_select( :unit, :condo_id, Condo.find(:all), :id, :name, :prompt => "Any" ) %>
+							
+								
+								
+							</div>
+
+							<div id="propertySearchPrice">
+								<h1>Price Range:</h1>
+								<%= select( :unit, :price_lower, [['$100,000',100000],  																	
+  																	['$200,000',200000],  																	
+  																	['$300,000',300000],  																	
+  																	['$400,000',400000],  																	
+  																	['$500,000',500000],  																	
+  																	['$600,000',600000],
+  																	['$700,000',700000],
+  																	['$800,000',800000],
+  																	['$900,000',900000],
+  																	['$1,000,000',1000000]],
+  																	:prompt => "No Minimum" )%>
+								 <%= select( :unit, :price_upper, [['$100,000',100000],  																	
+  																	['$200,000',200000],  																	
+  																	['$300,000',300000],  																	
+  																	['$400,000',400000],  																	
+  																	['$500,000',500000],  																	
+  																	['$600,000',600000],
+  																	['$700,000',700000],
+  																	['$800,000',800000],
+  																	['$900,000',900000],
+  																	['$1,000,000',1000000]],
+  																	:prompt => "No Maximum" )%>
+							</div>
+
+							<div id="propertySearchBeds">
+								<table>
+									<tr>
+										<td><h1>Beds:</h1></td>
+										<td><h1>Baths:</h1></td>
+									</tr>
+									<tr>
+										<td>
+											<%= select( :unit, :bedrooms, %w{1 2 3 4 5 6}, :prompt => "Any" )%> 
+										</td>
+										<td>
+											<%= select( :unit, :bathrooms, %w{1 2 3 4 5}, :prompt => "Any" )%>
+										</td>
+									</tr>
+								</table>								
+								<%= image_submit_tag("site_wide/main_22.jpg", { :name => "commit", :id =>"startYourSearchBtn" } ) %>										  
+							</div>		
+							
+							 		<% end %>			
+						</div>
+						<%= link_to_function "<span>Buy </span>a property", "new Effect.toggle('propertySearch', 'blind')", :class => "bigButton" %>
+						<%= link_to_function "<span>Sell </span>your property", "new Effect.toggle('propertySearch', 'blind')", :class => "bigButton" %>
+						<%= link_to_function "<span>Rent </span>a property", "new Effect.toggle('propertySearch', 'blind')", :class => "bigButton" %>
+						
+						
+											
+
+		
+
+
+

@@ -1,0 +1,48 @@
+<% for unit in @units %>					
+					<div class="searchResult">
+						<div class="searchResultItem">
+							<table cellpadding="0" cellspacing="0">
+								<tr class="listingTitle">
+									<td rowspan="3" colspan="3" class="listingImage">
+										
+										<% if unit.mls_photos != "" %>
+											<%= image_tag(unit.mls_photos.split(',').first.to_s, :size => "87x72")%>
+										<% else %>
+											<img src="/images/site_wide/NoPhotoAvailable.gif" width="87" height="72" alt="" />
+										<% end %>
+										
+										</td>
+									<td colspan="4"><%= unit.condo.name %> <span class="unitNum"> Unit <%= unit.unit_number %></span></td>
+									<td colspan="2" class="listingPrice"><%= number_to_currency(unit.price, :precision => 0) %></td>
+								</tr>
+								<tr class="listingInfoTitle">
+									<td>Address</td>
+									<td class="textAlignCenter ">Bed</td>
+									<td class="textAlignCenter">Bath</td>
+									<td class="textAlignCenter">sq ft</td>
+									<td rowspan="2" colspan="2" class="listingFcns removeBorder">
+									<br /><br />
+										<div class="greenBtn2">												
+												<% unit_url = "/real-estate/" << unit.condo.permalink_condo << "/" << unit.permalink_unit %>
+												<%= link_to "view unit", unit_url, :class => "greenBtn2Inside"%>											
+											</div>	
+									</td>
+								</tr>
+								<tr class="listingInfo">
+									<td>
+										<%= unit.condo.street_number %> <%= unit.condo.street_name %><br /> <%= unit.condo.city %>, <%= unit.condo.state %> <%= unit.condo.zip_code %>
+									</td>
+									<td class="textAlignCenter numbers">
+										<%= unit.bedrooms %>
+									</td>
+									<td class="textAlignCenter numbers">
+										<%= unit.bathrooms %>
+									</td>
+									<td class="textAlignCenter numbers">
+										<%= number_with_delimiter(unit.square_footage) %>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div><!-- end of search result -->
+<% end %>

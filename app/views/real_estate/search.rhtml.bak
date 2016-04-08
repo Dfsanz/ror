@@ -1,0 +1,44 @@
+
+			
+			<div id="bottomHolder">
+				<div id="columnLeft">				
+					<%= render :partial => 'shared/real_estate_ui' %>
+
+				</div>
+				<div id="columnRightSec">
+					<div class="breadCrumb">
+						<ul>
+							<li><a href="">Home</a>:</li>
+							<li><a href="">Real Estate</a>:</li>
+							<li>Search Results</li>
+						</ul>
+					</div>
+					<!-- end of breadcrumb -->
+
+					<h1 class="alignLeft"><span><%= number_with_delimiter(@no_records_returned) %></span> Properties Match Your Search.</h1>
+					<br>
+					<ul class="searchFunctions">
+						
+		
+		
+						<!-- <li class="searchFunction1"><a href="">Back to Results</a></li>
+						<li class="searchFunction2"><a href="">Print This Page</a></li>  -->
+						<!-- searchFunction3 -->
+						<li class="searchFunction3">Displaying search results <%= number_with_delimiter(@pages.current_page.first_item) %> - <%= number_with_delimiter(@pages.current_page.last_item) %></li>								
+						<li class="searchFunction3"> <%= render :partial => 'shared/paginator' %>		</li>
+						
+					</ul>
+					<ul id="searchResultTabs">
+						<!-- firstTab -->		
+						<li class="firstTab"><a href="?sort_by=condos.name&amp;page=<%= @pages.current_page.number %>">Condo name</a></li>
+
+<li><a href="?sort_by=units.price&amp;page=<%= @pages.current_page.number %>">Price</a></li>
+						<li><a href="?sort_by=units.square_footage&amp;page=<%= @pages.current_page.number %>">Square feet</a></li>
+						<li class="lastTab"><a href="?sort_by=units.unit_number&amp;page=<%= @pages.current_page.number %>">Unit number</a></li>				
+					</ul>	
+								
+					 <%= render :partial => 'shared/listing_unit' %>	
+					 <br>		
+					 <%= render :partial => 'shared/paginator' %>				
+				</div>
+			</div>

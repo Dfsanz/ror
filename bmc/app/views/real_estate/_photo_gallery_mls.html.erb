@@ -1,0 +1,30 @@
+<div id="photoViewer">
+  <div class="chooseYourView">
+    <ul>
+      <li class="menuTitle">CONTACT US</li>      
+        <li id="temp" style="height:100%;">      
+          Interested in this property?<br>  
+          Please call us at 305.778.0324<br> 
+          for more information.
+        </li>      
+    </ul>
+  </div>
+  <div id="imageHolder" class="imageHolder">   	  	          
+    <% @mls_photos.each_with_index do |photo, index| %>        
+				<%= render_mls_photo(photo.to_s, index == 0, index) %>        		
+		<% end %>    
+  </div>
+  <div class="imageNav clearBoth">
+    <table>
+      <tr>                  
+        <td>                                    
+          <div id="thumbnails" class="thumbnailsHolder" style='white-space: nowrap;'>                                         
+            <%= render(:partial => "photo_gallery_thumbnails_mls") %>
+          </div>
+        </td>                 
+      </tr>
+    </table>
+  </div>
+  <!-- end of imageNav -->          
+</div>
+<!-- end of photoViewer -->

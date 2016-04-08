@@ -1,0 +1,20 @@
+<div class="breadCrumb"><ul><li><a href="/">Home</a></li> &#187; <li>Login</li></ul></div>
+<div id="loginAndRegistrationHolder">
+	<div id="loginAndRegistration">
+		<h1 class="unitInfoHeader">Login</h1>
+		<div id="registrationInfo">	
+			<%= session[:redirection_url]= url_unescape(request.query_string()) %>		
+				<p>test test test test test test test test	test test test test	test test test test	test test test test	test test test test	test test test test	test test test test	test test test test	test test test test	test test test test	test test test test test test test test	test test test test	test test test test	test test test test	test test test test	test test test test	test test test test	test test test test	test test test test	test test test test test test test test test test test test	test test test test	test test test test	test test test test	test test test test	test test test test	test test test test	test test test test	test test test test	test test test test								</p>
+		</div>
+		<% form_for :user, :url => {:action => 'authenticate'} do |f| -%>	  
+		<div id="registration">
+		  <div id="userInfo">	
+			  <p>Email:<br /><%= f.text_field :username, :size => 30 %></p>
+			  <p>Password:<br /><%= f.password_field :password, :size => 30 %></p>
+			</div>
+		  <br>
+			<div class="blueBtn"><%= submit_tag 'Login', :class => "blueBtnInside" %></div>				
+		</div>
+	</div>
+</div>  
+<% end %>

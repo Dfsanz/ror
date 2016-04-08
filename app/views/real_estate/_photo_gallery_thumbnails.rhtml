@@ -1,0 +1,18 @@
+<% if photo_gallery_thumbnails %>
+  <% photo_gallery_thumbnails.photos.each do |photo| %> 
+    <%
+      this_photo_id = photo.id
+      effect_queue =  "new Effect.Parallel([new Effect.Appear('photo_id_#{photo.id}', { duration:.3 }),"    
+      
+      photo_gallery_thumbnails.photos.each do |p2|
+        effect_queue << "new Effect.Fade('photo_id_#{p2.id}', { duration:.3 })," if p2.id != this_photo_id
+      end
+      
+      effect_queue.chomp!("),")
+      effect_queue << ",{ queue: 'end' })])"
+    %>
+      
+    <% image_tag = image_tag url_for_file_column(photo, "image_link", "thumb") %>
+    <%= link_to_function image_tag, effect_queue %>
+  <% end %>
+<% end %>

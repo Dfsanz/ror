@@ -1,0 +1,32 @@
+
+
+
+<div class="breadCrumb"><ul><li><a href="/">Home</a></li> &#187; <li>Edit Your Account</li></ul></div>
+
+<%= error_messages_for :user %>
+
+<div id="loginAndRegistrationHolder">
+	<div id="loginAndRegistration">
+		<h1 class="unitInfoHeader">Edit Your Account</h1>
+		<div id="registrationInfo">			
+				<p>Edit your information and save.</p>
+		</div>
+	<% form_for :user, 
+            :url => user_url(@user), 
+            :html => { :method => :put } do |f| -%>  
+		<div id="registration">
+		  <div id="userInfo">	
+			  		<p>First Name:<br /><%= f.text_field :first_name, :size => 40 %></p>	
+						<p>Last Name:<br /><%= f.text_field :last_name, :size => 40 %></p>	          
+					  <p>Email:<br /><%= f.text_field :username, :size => 60 %></p>
+					  <p>Password:<br /><%= f.password_field :password, :size => 60 %></p>
+					  <p>Password Confirmation:<br />
+					    <%= f.password_field :password_confirmation, :size => 60 %></p>
+					  <p>Phone:<br /><%= f.text_field :phone, :size => 60 %></p>
+			</div>
+		  <br>
+			<div class="blueBtn"><%= submit_tag 'Save', :class => "blueBtnInside" %></div>				
+		</div>
+	</div>
+</div>  
+<% end -%>

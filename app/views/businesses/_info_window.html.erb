@@ -1,0 +1,30 @@
+<% if business.class.to_s == "Business" %>
+<div class="info_window">
+  <div id="title"><%=h business.name %></div>
+  <div id="content">
+
+    <%=h business.address %>
+    <div id="link">
+      <span>&gt;&gt;</span>
+      
+      <%= link_to "View Details", show_business_path(:id => business)%>
+      
+    </div>    
+  </div>
+</div>
+<% else %>
+<div class="info_window">
+  <div id="title"><%=h business.name %></div>
+  <% if business.main_image.nil? %>	
+				<img src="/images/site_wide/PhotoComingSoon.jpg" width="100" height="129" alt="" />hello											
+			<% else %>
+				
+		<% end %>	
+  <div id="content"><%=h business.address %>  	
+    <div id="link">
+      <span>&gt;&gt;</span>
+      <%= link_to 'View Details', condo_path(business.permalink_condo) %>
+    </div>    
+  </div>
+</div>
+<% end %>

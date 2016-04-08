@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>  
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title><%= @page_title || 'Brickell Miami Condos - Live + Work + Play' %></title>
+   <%= javascript_include_tag :all, :cache => "brickell" %>
+  <%= stylesheet_link_tag ( @style_sheet || "admin") %>
+  <link rel="stylesheet" href="/stylesheets/lightbox.css" type="text/css" media="screen" />  
+</head>
+<body>	
+	<div id="container">		
+		<div id="floatNav">
+			<a href=""><img id="logo" src="/images/site_wide/brickellmiami_logo_largev2.gif" width="283" height="112" alt="" /></a>			
+		</div> <!-- END floatNav -->		
+		<div id="mainNav">
+			<ul>
+				<li><a class="<%= @condos_tab %>" href="/condo/">Condos</a></li>
+				<li><a class= "<%= @agents_tab %>" href="/agent/">Agents</a></li>
+				<li><a class= "<%= @categories_tab %>" href="/categories/">Categories</a></li>
+				<li><a class= "<%= @firms_tab %>" href="/firm/">Firms</a></li>				
+				<li><a class= "<%= @leads_tab %>" href="/leads/">Leads</a></li>	
+				<li><a class= "<%= @photos_tab %>" href="/photo/">Photos</a></li>	
+				<li><a class= "<%= @photo_galleries_tab %>" href="/photo_gallery/">Photo Galleries</a></li>	
+			</ul>
+		</div> <!-- END mainNav -->				
+		<div id="mainContent">
+			<div id="contentHolder">

@@ -1,0 +1,21 @@
+					 <div id="areaDetailsLeft">
+						<div class="chooseYourView">
+							<ul>
+								<li class="menuTitle">CATEGORIES</li>
+								<% for category in @categories %>
+								<li><%= link_to category.name, show_category_path(:category_id => category), :onclick => "$(\'#{dom_id(category)}\').toggle(); return false;" %></li>
+									<% unless category.children.empty? %>
+									<li id="<%= dom_id(category) %>" style="display:none">	
+										<ul>
+											<% for subcategory in category.children %>
+												<li><%= link_to subcategory.name, show_category_path(:category_id => subcategory) %></li>
+											<% end %>
+										</ul>
+									</li>	
+									<% end %>
+								
+								<% end %>
+							</ul>
+						</div>
+					</div>
+					<!-- end of left column -->

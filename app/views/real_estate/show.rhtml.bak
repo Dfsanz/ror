@@ -1,0 +1,128 @@
+				<%= @icons.collect {|i| i.to_html} %>
+				<div id="bottomHolder">
+				<div id="columnLeft">	
+					<%= render :partial => 'shared/real_estate_ui' %>	
+					
+					<script type="text/javascript">
+					  var ws_address = "1501 Pike Place, Seattle, WA, 98101";
+					  var ws_width = "200";
+					</script>
+<script type="text/javascript" src="http://walkscore.com/tile/show-tile.php?wsid=37f387b827dd696f6d8ffd739479dd94"></script>								
+				</div>
+				<div id="columnRightSec">
+					<div class="breadCrumb">
+						<%= breadcrumbs %>
+					</div>
+					<!-- end of breadcrumb -->
+						<%= render :partial => 'condo_photo_gallery' %>	
+					
+					<div id="condoComponent" class="condoComponent">					
+					<div class="condoInfo">		
+						<h1 class="unitInfoHeader">
+								<%= @condo.name %>				
+						</h1>
+					</div>	
+										
+					<div class="blindUpDownUnitInfo" id="blindUpDownUnitInfo" style="height:408px;">
+											
+						
+						<div id="map_property" class="condoInfo"  style="position:absolute; z-index:-1;">
+							<div class="unitInfoTitle">Map Property</div>											
+								<div class="condoInfoContent" style="height:377px;" id="map" ><%= render_map @map %></div>												
+						</div>				
+						
+						<div id="condo_info" class="condoInfo">	
+							<div class="unitInfoTitle">Condo Information</div>				
+							<div class="condoInfoContent">
+								<div class="condoInfoLabel">Year built:</div><div class="condoInfoValue"><%= @condo.year_built %></div>		                 
+								<div class="condoInfoLabel">Address:</div><div class="condoInfoValue" style="line-height:normal;"><%= @condo.street_number %> <%= @condo.street_name %><br /> <%= @condo.city %>, <%= @condo.state %> <%= @condo.zip_code %></div>		
+								<div class="condoInfoLabel">Number of floors:</div><div class="condoInfoValue"><%= @condo.no_of_floors %></div>		                 
+								<div class="condoInfoLabel">Number of units:</div><div class="condoInfoValue"><%= @condo.no_of_units %></div>		                 																																																																																																								
+								<div class="condoInfoLabel">Bedrooms:</div><div class="condoInfoValue"><%= @condo.bedrooms %></div>		                 
+								<div class="condoInfoLabel">Bathrooms:</div><div class="condoInfoValue"><%= @condo.bathrooms %></div>		
+								<div class="condoInfoLabel">Units for sale:</div><div class="condoInfoLabel" style="width:160px;border-right:none;"><span class="unitInfoSubLabel"><%= @condo.units.find(:all, :conditions => ["sale_or_rent ='sale' and active='1'"]).size %></span></div>
+								<div class="condoInfoLabel">For sale price range:</div><div class="condoInfoValue"><%= number_to_currency(@condo.units.minimum(:price, :conditions => ["sale_or_rent = 'sale' and active = '1'"]), :precision => 0) %> - <%= number_to_currency(@condo.units.maximum(:price, :conditions => ["sale_or_rent = 'sale' and active = '1'"]), :precision => 0) %></div>	
+																																																		
+								<div class="condoInfoLabel">Units for rent:</div><div class="condoInfoLabel" style="width:160px;border-right:none;"><span class="unitInfoSubLabel"><%= @condo.units.find(:all, :conditions => ["sale_or_rent ='rent' and active='1'"]).size %></span></div>									                 
+								<div class="condoInfoLabel" style="border-bottom:none;">For rent price range:</div><div class="condoInfoValue" style="border-bottom:none;"><%= number_to_currency(@condo.units.minimum(:price, :conditions => ["sale_or_rent = 'rent' and active = '1'"]), :precision => 0) %> - <%= number_to_currency(@condo.units.maximum(:price, :conditions => ["sale_or_rent = 'rent' and active = '1'"]), :precision => 0) %></div>
+								<div class="condoInfoLabel" style="border-top:none;"></div><div class="condoInfoValue" style="border-top:none;"></div>
+					                 
+								
+								
+							</div>								
+						</div>						
+						
+					</div>							
+					<div class="condoInfo" style="height:35px;">						
+							<div class="condoInfoBasic">
+								<%= link_to_function "Condo Information",
+																					"showCondoInfo()" %>
+							</div>								
+							<div class="mapThisProperty">
+						 		<%= link_to_function "Map this Property",
+																					"showMapProperty()" %>		
+							</div>																											
+					</div>					
+					<div class="condoInfo" style="border-bottom: 1px solid #c4c4c4;border-top:none;">													
+						<div style="padding-top:8px;padding-bottom:8px;"><a class="bigGreenBtn alignCenter" href="">request more information</a></div>
+					</div>											
+					<!-- end of condoInfo -->
+					</div> <!-- end of condoComponent -->		
+					
+					
+					
+						<div class="condoDescription">
+						<br><br>
+						<h1>Condo Description:</h1>
+						<p>This is where the condo description goes This is where the condo description goes This is where the condo description goes This is where the condo description goes This is where the condo description goes This is where the condo description goes This is where the condo description goes This is where the condo description goes This is where the condo description goes This is where the condo description goes This is where the condo description goes This is where the condo description goes This is where the condo description goes This is where the condo description goes </p>
+					</div>
+	
+
+				<ul id="searchResultTabs">
+						<li class="firstTab"><a href="">Most Recent</a></li>
+						<li><a href="">Price</a></li>
+						<li><a href="">Square feet</a></li>
+						<li class="lastTab"><a href="">Pictures</a></li>
+					</ul>					
+ 				<%= render :partial => 'shared/listing_unit' %>								
+					
+					<script type="text/javascript">
+						//<![CDATA[
+						function load() 
+						{
+							if (GBrowserIsCompatible()) 
+							{
+								var map = new GMap2(document.getElementById("map"));
+								map.addControl(new GSmallMapControl());map.addControl(new GMapTypeControl());
+								map.setCenter(new GLatLng(<%= @condo.latitude %>, <%= @condo.longitude %>), 16);
+								// map.openInfoWindow(map.getCenter(), document.createTextNode("Hello, world"));
+								var marker = new GMarker(new GLatLng(<%= @condo.latitude %>, <%= @condo.longitude %>));
+								GEvent.addListener(marker, "click", function() {    marker.openInfoWindowHtml("Condo ID: #<b>" + <%= @condo.id %> + "</b>");  });				    								
+								map.addOverlay(marker);		
+								
+							}
+						}
+						
+						function addMarker(latitude, longitude, id) 
+						{
+						    var marker = new GMarker(new GLatLng(latitude, longitude));
+						    GEvent.addListener(marker, 'click',
+						        function() {
+						           focusPoint(id);
+						        }
+						    );
+						    map.addOverlay(marker);						    
+						}
+						
+						function focusPoint(id)
+						{
+					  
+						}
+						
+						//]]>
+						</script>
+					
+												
+				</div> <!-- end columnRightSec -->  
+			</div>
+			

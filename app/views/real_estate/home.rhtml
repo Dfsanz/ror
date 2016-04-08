@@ -1,0 +1,57 @@
+	<% @style_sheet = "master" %>			
+			<div id="flashHolder">
+				<a href="">
+				<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="706" height="222">
+                  <param name="movie" value="/flash/brickell-main_gab.swf" />
+                  <param name="quality" value="high" />
+                  <embed base="." src="/flash/brickell-main_gab.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="706" height="222"></embed>
+                  <param name="base" value="." />
+			    </object>
+				</a></div><!-- END flashHolder -->			 
+			<div id="holder1">	
+				<a href="/community/brickell-and-downtown-miami/" alt="Downtown Miami Guide">
+				<div id="brickellGuide">
+							
+						</div>
+				</a>					
+				<div id="newsletter">
+					<div class="newsLetter"><h2 class="newsLetterTitle">E-NEWSLETTER</h2></div>	
+					<div id="description"><p style="padding-top:5px;padding-bottom:5px;">Receive <a href="http://brickellmiamicondos.com/en/">Brickell Blog</a> posts via email:</p></div>					
+					<form action="http://www.feedburner.com/fb/a/emailverify" method="post" target="popupwindow" onsubmit="window.open('http://www.feedburner.com/fb/a/emailverifySubmit?feedId=1655191', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+					<table>
+						<tr>
+							<td><input type="text" value="Enter your email"name="email"/><input type="hidden" value="http://feeds.feedburner.com/~e?ffid=1655191" name="url"/><input type="hidden" value="BrickellMiamiCondos.com Blog Feed" name="title"/><input type="hidden" name="loc" value="en_US"/></td>
+							<td>
+								<div class="blueBtn">
+									<input class="blueBtnInsideHome" type="submit" value="subscribe"/>
+								</div>
+							</td>
+						</tr>
+					</table>
+					</form>
+					<div id="description"><p class="finePrint"><a href="http://brickellmiamicondos.com/en/privacy-policy/">privacy policy</a> | powered by <a href="http://www.feedburner.com/fb/a/home"  target="_blank">feedburner</a></p></div>
+				</div>				
+			</div> <!-- END holder1 -->			
+			
+			<div id="bottomHolder">
+				<div id="columnLeft">					
+					<%= render :partial => 'shared/real_estate_ui' %>		
+										
+				</div> <!-- END columnLeft -->				
+				<div id="columnMid">
+					<div id="featuredProperties">
+						<div class="infoList"><h1 class="infoListTitle">FEATURED CONDOS</h1></div>								
+							<%= render :partial => 'listing_featured_condo' %>
+					</div> <!-- END featuredProperties -->
+				</div> <!-- END columnMid -->
+
+				<div id="columnRight">
+										<div id="events">
+						<div class="infoList" style="padding-left:-5px;"><h2 class="infoListTitle">LATEST BLOG POSTS</h2></div>																		
+							
+							<div class="feed"><a style="padding-right:5px;" href="http://brickellmiamicondos.com/en/feed"><img id="logo" src="/images/site_wide/feed-icon-16x16.png" width="16" height="16" alt="" /></a><a href="http://brickellmiamicondos.com/en/feed">Subscribe to RSS Feed</a> | <a href="http://www.whatisrss.com/" target="_blank">what's RSS?</a></div>	
+					</div><!-- END events -->			
+
+								
+				</div> 	<!-- END columnRight -->
+			</div> <!-- END bottomHolder -->

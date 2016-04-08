@@ -1,0 +1,3 @@
+class PhotoGalleryTypes < ActiveRecord::Base
+	belongs_to :photo_galleries
+end

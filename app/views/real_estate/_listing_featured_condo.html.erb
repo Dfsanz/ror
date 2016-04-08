@@ -1,0 +1,21 @@
+			<% for condo in @featured_condos %>
+					<div class="featuredItem">							
+							<table cellpadding="0" cellspacing="0" border="0">
+								<tr>
+									<td class="propertyImage">
+										<a href="<%= url_for_file_column(condo, 'main_image', 'medium') %>" rel="lightbox" title="<%= condo.name %>"><%= image_tag url_for_file_column(condo, "main_image", "thumb")%></a>																									                 																				
+									</td>
+									<td class="propertyDescription">
+										<h3><%= link_to condo.name, condo_url(:permalink_condo => condo.permalink_condo) %></h3>
+										
+										<% blurb = condo.description.slice(0..400) %>										
+										<%= condo.description.empty? ? textilize(condo.description) : textilize(blurb.slice(0..blurb.rindex(' ')).strip << "...") %></p>
+											<div class="greenBtn2">
+												<%= link_to "view condo", condo_url(:permalink_condo => condo.permalink_condo), :class => "greenBtn2Inside" %>												
+											</div>		
+									</td>
+								</tr>
+							</table>
+						</div>
+			<% end %>			
+			

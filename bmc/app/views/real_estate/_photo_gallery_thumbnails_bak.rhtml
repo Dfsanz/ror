@@ -1,0 +1,9 @@
+<% if photo_gallery_thumbnails.photos.any? %>
+  <ul>
+    <% photo_gallery_thumbnails.photos.each do |photo| %>
+      <li id="<%= photo.id %>">      	        
+					<%= photo.name %>              
+      </li>
+    <% end %>
+  </ul>
+<% end %>

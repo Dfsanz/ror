@@ -1,0 +1,8 @@
+<%= render(:partial => "photo_gallery") %>
+
+
+<% for column in Unit.content_columns %>
+<p>
+  <b><%= column.human_name %>:</b> <%=h @unit.send(column.name) %>
+</p>
+<% end %>

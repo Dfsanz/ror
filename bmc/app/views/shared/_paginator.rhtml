@@ -1,0 +1,11 @@
+					<% if @pages.length > 1 %>
+					<div class="pageList">
+						<ul>
+								<li>Pages</li>			
+								<%= pagination_links_each(@pages, :window_size => 4) do |n|
+								"<li><a href='?page=#{n}'>#{n}</a></li>"
+								end %>												
+						</ul>
+					</div>
+					<% end %>
+					

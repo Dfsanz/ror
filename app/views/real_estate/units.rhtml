@@ -1,0 +1,27 @@
+<h1>Listing units</h1>
+
+<table>
+  <tr>
+  <% for column in Unit.content_columns %>
+    <th><%= column.human_name %></th>
+  <% end %>
+  </tr>
+  
+<% for unit in @units %>
+  <tr>
+  <% for column in Unit.content_columns %>
+    <td><%=h unit.send(column.name) %></td>
+  <% end %>
+    <td><%= link_to 'Show', :action => 'show', :id => unit %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => unit %></td>
+    <td><%= link_to 'Destroy', { :action => 'destroy', :id => unit }, :confirm => 'Are you sure?', :method => :post %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Previous page', { :page => @unit_pages.current.previous } if @unit_pages.current.previous %>
+<%= link_to 'Next page', { :page => @unit_pages.current.next } if @unit_pages.current.next %> 
+
+<br />
+
+<%= link_to 'New unit', :action => 'new' %>

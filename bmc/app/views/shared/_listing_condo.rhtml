@@ -1,0 +1,56 @@
+<% for condo in @condos %>					
+					<div class="searchResult">
+						<div class="searchResultItem">
+							<table cellpadding="0" cellspacing="0">		
+								<tr class="listingTitle">			
+									
+									<td rowspan="3" colspan="3" class="listingImageCondo">								
+									<% if condo.main_image.nil? %>	
+										  <img src="/images/site_wide/PhotoComingSoon.jpg" width="100" height="129" alt="" />											
+									<% else %>
+										  <a id="condo_id_<%= condo.id %>" href="<%= url_for_file_column(condo, 'main_image', 'medium') %>" rel="lightbox" title="<%=condo.name%>">
+										  	<%= image_tag url_for_file_column(condo, "main_image", "thumb")%>
+										  	</a>																									                 																															
+									<% end %>									
+									</td>									
+									<td colspan="6">
+										<%= link_to condo.name, condo_url(:permalink_condo => condo.permalink_condo)%>
+									</td>									
+									<td colspan="2" class="listingPrice">
+											&nbsp;
+									</td>
+									
+								</tr>						
+								<tr class="listingInfoTitle">
+									<td class="listingAddress">Address</td>
+									<td class="textAlignCenter">Year Built</td>
+									<td class="textAlignCenter">For Sale</td>									
+									<td class="textAlignCenter">For Rent</td>									
+									<td class="textAlignCenter">Avg Sale</td>	
+									<td class="textAlignCenter">Avg Rent</td>	
+									<td rowspan="2" colspan="2" class="listingFcns removeBorder">
+										<!-- <a class="saveListing" href="">Save Listing</a> --> <br /><br />
+											<div class="greenBtn2">
+												<%= link_to "list units", condo_url(:permalink_condo => condo.permalink_condo), :class => "greenBtn2Inside"%>												
+											</div>												
+									</td>									
+								</tr>													
+								<tr class="listingInfo">
+									<td class="listingAddress">
+											<%= condo.street_number %> <%=h condo.street_name %><br /> <%= condo.city %>, <%= condo.state %> <%= condo.zip_code %>
+									</td>
+									<td class="textAlignCenter numbers"><%= condo.year_built %></td>									
+									<td class="textAlignCenter numbers"><%= condo.units.find(:all, :conditions => ["sale_or_rent ='sale' AND active = '1'"]).size %></td>
+									<td class="textAlignCenter numbers"><%= condo.units.find(:all, :conditions => ["sale_or_rent ='rent' AND active = '1'"]).size %></td>
+									<td class="textAlignCenter numbers"><%= number_to_currency(condo.units.average(:price, :conditions =>["sale_or_rent = 'sale' and active = '1'"]), :precision => 0) %></td>
+									<td class="textAlignCenter numbers"><%= number_to_currency(condo.units.average(:price, :conditions =>["sale_or_rent = 'rent' and active = '1'"]), :precision => 0) %></td>									
+								</tr>
+							</table>
+						</div>
+					</div><!-- end of search result -->
+<% end %>    
+
+<%= link_to 'Previous page', { :page => @condo_pages.current.previous } if @condo_pages.current.previous %>
+<%= link_to 'Next page', { :page => @condo_pages.current.next } if @condo_pages.current.next %> 
+
+

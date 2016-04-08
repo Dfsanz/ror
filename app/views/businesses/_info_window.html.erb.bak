@@ -1,0 +1,28 @@
+<% if business.class.to_s == "Business" %>
+<div class="info_window">
+  <div id="title"><%=h business.name %></div>
+  <div id="content">
+    <%= image_tag(business.business_photo.public_filename(:thumb)) unless business.business_photo.nil? %>
+    <%=h business.address %>
+    <div id="link">
+      <span>&gt;&gt;</span>
+      <%= link_to 'View Details', business %>
+    </div>    
+  </div>
+</div>
+<% else %>
+<div class="info_window">
+  <div id="title"><%=h business.name %></div>
+  <% if business.main_image.nil? %>	
+				<img src="/images/site_wide/PhotoComingSoon.jpg" width="100" height="129" alt="" />											
+			<% else %>
+				<%= image_tag(url_for_file_column(business, "main_image", "thumb")) if business %>
+		<% end %>	
+  <div id="content"><%=h business.address %>  	
+    <div id="link">
+      <span>&gt;&gt;</span> blah
+      <%= link_to 'View Details', condo_path(business.permalink_condo) %>
+    </div>    
+  </div>
+</div>
+<% end %>

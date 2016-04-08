@@ -1,0 +1,9 @@
+<%(@doc/:item).each do |item| %>
+	<div class="eventItem">		
+	<% blurb = remove_cdata_tag((item/:description).inner_html).slice(0..125) %>	
+		    <h3> <%= link_to (item/:title).inner_html, (item/:link).inner_html %></h3>		
+		    <p> <%= blurb.slice(0..blurb.rindex(' ')).strip << "..." %> </p>
+		    <p><%= link_to 'view post', (item/:link).inner_html %></p>		    
+	</div>	
+<% end %>
+

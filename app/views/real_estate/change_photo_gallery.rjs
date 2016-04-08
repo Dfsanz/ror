@@ -1,0 +1,7 @@
+page.replace_html 'thumbnails', :partial => 'photo_gallery_thumbnails', :locals => { :photo_gallery_thumbnails => @photo_gallery }
+
+photos = ''
+@photo_gallery.photos.each_with_index { |photo, index| photos << render_photo(photo, index == 0) }
+
+page.replace_html 'imageHolder', photos
+page << 'initLightbox();'

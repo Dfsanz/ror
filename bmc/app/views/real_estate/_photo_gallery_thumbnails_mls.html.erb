@@ -1,0 +1,14 @@
+<% @mls_photos.each_with_index do |photo, index| %>
+    <%
+      this_photo_id = index
+      effect_queue =  "new Effect.Parallel([new Effect.Appear('photo_id_#{index}', { duration:.3 }),"    
+      
+      @mls_photos.each_with_index do |p2, i2|      
+        effect_queue << "new Effect.Fade('photo_id_#{i2}', { duration:.3 })," if i2 != this_photo_id
+      end
+      
+      effect_queue.chomp!("),")
+      effect_queue << ",{ queue: 'end' })])"
+    %>  
+  <%= link_to_function image_tag(photo.to_s, :size => "120x75"), effect_queue %>	
+<% end %>
