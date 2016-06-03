@@ -3,14 +3,14 @@ Real estate web app based on MVC architecture.  The web app ingests Southeast Fl
 
 ## Demo
 
-*Home Page*
+**Home Page**
 https://web.archive.org/web/20090115015511/http://brickellmiamicondos.com/
 
-Condo Page
+**Condo Page**
 https://web.archive.org/web/20090105172040/http://brickellmiamicondos.com/condos/atlantis-on-brickell
 
-Community Guide
+**Community Guide**
 https://web.archive.org/web/20090105172754/http://brickellmiamicondos.com/community/brickell-and-downtown-miami
 
-Blog
+**Blog**
 https://web.archive.org/web/20090105190137/http://brickellmiamicondos.com/en/
