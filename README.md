@@ -1,6 +1,12 @@
 # Example of Ruby-on-Rails Web App
 Real estate web app based on MVC architecture.  The web app ingests Southeast Florida MLS data and presents neighborhood and property information including: condo building information, unit information, unit photos and neighborhood information.
 
+# Technologies
+
+- Front-End: jQuery, CSS
+- Web App Framework: Ruby-on-Rails
+- Database: MySQL
+
 ## Demo
 
 **Home Page**
@@ -12,5 +18,3 @@ https://web.archive.org/web/20090105172040/http://brickellmiamicondos.com/condos
 **Community Guide**
 https://web.archive.org/web/20090105172754/http://brickellmiamicondos.com/community/brickell-and-downtown-miami
 
-**Blog**
-https://web.archive.org/web/20090105190137/http://brickellmiamicondos.com/en/
