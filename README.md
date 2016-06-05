@@ -4,7 +4,7 @@ Real estate web app based on MVC architecture.  The web app ingests Southeast Fl
 
 # Technologies
 
-- Front-End: jQuery, CSS
+- Front-End: XHTML, jQuery, CSS
 - Web App Framework: Ruby-on-Rails
 - Database: MySQL
 
